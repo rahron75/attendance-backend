@@ -1,0 +1,17 @@
+create table teachers(tid int not null auto_increment, name varchar(255), fingerprint blob(65535), branch_id varchar(255), primary key(tid));
+
+create table branch(branch_id int not null auto_increment, branch_name varchar(255), primary key(branch_id));
+
+alter table teachers add foreign key (branch_id) references  branch(branch_id);
+
+create table subjects (sub_id int not null AUTO_INCREMENT, sub_name varchar(255), sem int, tid int, primary key(sub_id), foreign key(tid) references teachers(tid));
+
+create table timetables_even_2022_2023 (ttid varchar(255), tt_name varchar(255), primary key(ttid));
+
+create table TT_2022_23_4_A_SEM8 (lec_start time, lec_end time, sub_id int, primary key(lec_start, lec_end), foreign key(sub_id) references subjects(sub_id));
+
+create table BE_2022_23_extc_A_SEM8 (sid int, sname varchar(255), fingerprint blob, DLOC1 varchar(255), DLOC2 varchar(255), IE varchar(255));
+
+why a seperate table for alloted teacher since common primary key
+
+reports table?
